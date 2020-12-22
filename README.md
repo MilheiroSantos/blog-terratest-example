@@ -3,7 +3,7 @@ A starter template for running Terraform and Terratest in Azure.
 
 ## How to run the example
 
-Login on your azure subscription:
+Login to your azure subscription:
 ```shell
 $ az login
 ```
