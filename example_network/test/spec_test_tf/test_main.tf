@@ -10,7 +10,7 @@ variable "workload_name" {
 data "azurerm_subscription" "current" {}
 
 module "network" {
-  source        = "../../module"
+  source        = "../../src"
   workload_name = var.workload_name
 }
 
