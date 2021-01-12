@@ -1,4 +1,4 @@
-# blog-terratest-example
+# terratest-example
 A starter template for running Terraform and Terratest in Azure. 
 
 ## How to run the example
