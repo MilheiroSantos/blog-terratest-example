@@ -38,7 +38,9 @@ func TestSpecs(t *testing.T) {
 	// Test Location
 	resourceGroupClient := resources.NewGroupsClient(subscriptionID)
 	resourceGroupClient.Authorizer = *authorizer
-	resourceGroup, err := resourceGroupClient.Get(context.Background(), resourceGroupName)
+	resourceGroup, err := resourceGroupClient.Get(
+		context.Background(), resourceGroupName,
+	)
 	if err != nil {
 		t.Log(err)
 		assert.FailNow(t, "Cannot get resource group")

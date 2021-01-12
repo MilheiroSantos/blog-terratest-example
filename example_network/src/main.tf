@@ -1,3 +1,10 @@
+provider "azurerm" {
+  version = "=2.20.0"
+  features {}
+}
+
+data "azurerm_subscription" "current" {}
+
 variable "workload_name" {
   type = string
 }
@@ -20,4 +27,8 @@ output "resource_group_name" {
 
 output "virtual_network_name" {
   value = azurerm_virtual_network.vnet.name
+}
+
+output "subscription_id" {
+  value = data.azurerm_subscription.current.subscription_id
 }
