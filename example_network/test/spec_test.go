@@ -12,7 +12,7 @@ import (
 )
 
 func TestSpecs(t *testing.T) {
-    t.Parallel()
+	t.Parallel()
 
 	terraformOptions := &terraform.Options{
 		TerraformDir: "spec_test_tf",
@@ -43,14 +43,24 @@ func TestSpecs(t *testing.T) {
 		t.Log(err)
 		assert.FailNow(t, "Cannot get resource group")
 	}
-	assert.Equal(t, "westeurope", *resourceGroup.Location, "Location must be West Europe")
+	assert.Equal(
+		t,
+		"westeurope", *resourceGroup.Location,
+		"Location must be West Europe",
+	)
 
 	// Test network CIDR block
 	virtualNetworkClient := network.NewVirtualNetworksClient(subscriptionID)
 	virtualNetworkClient.Authorizer = *authorizer
-	virtualNetwork, err := virtualNetworkClient.Get(context.Background(), resourceGroupName, virtualNetworkName, "")
+	virtualNetwork, err := virtualNetworkClient.Get(
+		context.Background(), resourceGroupName, virtualNetworkName, "",
+	)
 	if err != nil {
 		assert.FailNow(t, "Cannot get network")
 	}
-	assert.Equal(t, "10.20.0.0/16", (*virtualNetwork.AddressSpace.AddressPrefixes)[0], "Network must be in the 10.20.0.0/16 block")
+	assert.Equal(
+		t,
+		"10.20.0.0/16", (*virtualNetwork.AddressSpace.AddressPrefixes)[0],
+		"Network must be in the 10.20.0.0/16 block",
+	)
 }
