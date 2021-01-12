@@ -15,7 +15,7 @@ func TestSpecs(t *testing.T) {
 	t.Parallel()
 
 	terraformOptions := &terraform.Options{
-		TerraformDir: "spec_test_tf",
+		TerraformDir: "../src",
 		Vars: map[string]interface{}{
 			"workload_name": "terratest",
 		},
